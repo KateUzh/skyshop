@@ -15,4 +15,16 @@ public class SearchResult {
     public static SearchResult fromSearchable(Searchable searchable) {
         return new SearchResult(searchable.getId().toString(), searchable.getSearchTerm(), searchable.typeContent());
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTypeContent() {
+        return typeContent;
+    }
 }

@@ -35,7 +35,6 @@ public abstract class Product implements Searchable {
     public abstract boolean isSpecial();
 
     @Override
-    @JsonIgnore
     public String getSearchTerm() {
         return getProductDesignation();
     }
