@@ -36,18 +36,33 @@ public class StorageService {
         return searchables;
     }
 
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
+    }
+
     private void addToShop() {
-        products.put(UUID.randomUUID(), new SimpleProduct("молоко", 100, UUID.randomUUID()));
-        products.put(UUID.randomUUID(), new SimpleProduct("банан", 50, UUID.randomUUID()));
-        products.put(UUID.randomUUID(), new DiscountedProduct("морковь", 30, 30,
-                UUID.randomUUID()));
-        products.put(UUID.randomUUID(), new DiscountedProduct("черника", 220, 30,
-                UUID.randomUUID()));
-        products.put(UUID.randomUUID(), new FixPriceProduct("курица", UUID.randomUUID()));
-        articles.put(UUID.randomUUID(), new Article("Чай",
-                "Чёрный крупнолистовой чай без добавок", UUID.randomUUID()));
-        articles.put(UUID.randomUUID(), new Article("Чай",
-                "Зелёный крупнолистовой чай без добавок", UUID.randomUUID()));
-        articles.put(UUID.randomUUID(), new Article("Кофе", "Молотый кофе", UUID.randomUUID()));
+
+        Product milk = new SimpleProduct("молоко", 100, UUID.randomUUID());
+        Product banana = new SimpleProduct("банан", 50, UUID.randomUUID());
+        Product chocolate = new SimpleProduct("шоколад", 150, UUID.randomUUID());
+        Product carrot = new DiscountedProduct("морковь", 30, 30, UUID.randomUUID());
+        Product blueberry = new DiscountedProduct("черника", 220, 30,
+                UUID.randomUUID());
+        Product chicken = new FixPriceProduct("курица", UUID.randomUUID());
+        Article blackTeaArticle = new Article("Чай", "Чёрный крупнолистовой чай без добавок",
+                UUID.randomUUID());
+        Article greenTeaArticle = new Article("Чай", "Зелёный крупнолистовой чай без добавок",
+                UUID.randomUUID());
+        Article coffeeArticle = new Article("Кофе", "Молотый кофе", UUID.randomUUID());
+
+        products.put(milk.getId(), milk);
+        products.put(banana.getId(), banana);
+        products.put(chocolate.getId(), chocolate);
+        products.put(carrot.getId(), carrot);
+        products.put(blueberry.getId(), blueberry);
+        products.put(chicken.getId(), chicken);
+        articles.put(blackTeaArticle.getId(), blackTeaArticle);
+        articles.put(greenTeaArticle.getId(), greenTeaArticle);
+        articles.put(coffeeArticle.getId(), coffeeArticle);
     }
 }
