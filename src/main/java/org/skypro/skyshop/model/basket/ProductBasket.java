@@ -17,9 +17,8 @@ public class ProductBasket {
     }
 
     public void addProduct(UUID productId) {
-        if (products.containsKey(productId)) {
-            products.put(productId, products.get(productId) + 1);
-        } else products.put(productId, 1);
+        products.computeIfPresent(productId, (k, v) -> (v + 1));
+        products.computeIfAbsent(productId, (k) -> (1));
     }
 
     public Map<UUID, Integer> getProductsInBasket() {

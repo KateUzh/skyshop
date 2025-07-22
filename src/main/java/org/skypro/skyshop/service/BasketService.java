@@ -34,12 +34,4 @@ public class BasketService {
                 .toList();
         return new UserBasket(items);
     }
-
-    public ProductBasket getBasket() {
-        return basket;
-    }
-
-    public StorageService getStorageService() {
-        return storageService;
-    }
 }
