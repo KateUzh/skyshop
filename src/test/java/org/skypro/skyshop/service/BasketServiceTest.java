@@ -62,11 +62,11 @@ class BasketServiceTest {
         Map<UUID, Product> products = new HashMap<>();
         products.put(testId, product);
 
-        when(productBasket.getProductsInBasket()).thenReturn(Map.of(testId,2));
+        when(productBasket.getProductsInBasket()).thenReturn(Map.of(testId, 2));
         when(storageService.getProductById(testId)).thenReturn(Optional.ofNullable(products.get(testId)));
 
         UserBasket result = basketService.getUserBasket();
 
-        assertEquals(310,result.getTotal());
+        assertEquals(310, result.getTotal());
     }
 }
