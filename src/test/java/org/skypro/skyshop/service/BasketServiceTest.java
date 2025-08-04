@@ -52,20 +52,21 @@ class BasketServiceTest {
 
         UserBasket result = basketService.getUserBasket();
 
-        assertEquals(null, result);
+        assertEquals(0, result.getTotal());
     }
 
     @Test
     void givenProduct_whenGetUserBasket_thenReturnProductBasket() {
         UUID testId = UUID.randomUUID();
-        Product product = new SimpleProduct("молоко", 100, testId);
-        BasketItem basketItem = new BasketItem(product, 1);
-        List<BasketItem> item = new ArrayList<>();
-        item.add(basketItem);
-        when(productBasket.getProductsInBasket()).thenReturn(Map.of(testId,1));
+        Product product = new SimpleProduct("молоко", 155, testId);
+        Map<UUID, Product> products = new HashMap<>();
+        products.put(testId, product);
+
+        when(productBasket.getProductsInBasket()).thenReturn(Map.of(testId,2));
+        when(storageService.getProductById(testId)).thenReturn(Optional.ofNullable(products.get(testId)));
 
         UserBasket result = basketService.getUserBasket();
 
-        assertEquals(new UserBasket(item), result);
+        assertEquals(310,result.getTotal());
     }
 }
