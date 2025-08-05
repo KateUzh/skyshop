@@ -5,7 +5,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.skypro.skyshop.model.basket.BasketItem;
 import org.skypro.skyshop.model.basket.ProductBasket;
 import org.skypro.skyshop.model.basket.UserBasket;
 import org.skypro.skyshop.model.error.NoSuchProductException;
@@ -38,7 +37,6 @@ class BasketServiceTest {
     void givenExistentProduct_whenAddProduct() {
         UUID testId = UUID.randomUUID();
         Product product = mock(Product.class);
-
         when(storageService.getProductById(testId)).thenReturn(Optional.of(product));
 
         basketService.addProduct(testId);
@@ -61,7 +59,6 @@ class BasketServiceTest {
         Product product = new SimpleProduct("молоко", 155, testId);
         Map<UUID, Product> products = new HashMap<>();
         products.put(testId, product);
-
         when(productBasket.getProductsInBasket()).thenReturn(Map.of(testId, 2));
         when(storageService.getProductById(testId)).thenReturn(Optional.ofNullable(products.get(testId)));
 
