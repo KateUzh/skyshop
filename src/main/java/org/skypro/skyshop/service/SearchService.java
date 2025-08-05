@@ -21,7 +21,9 @@ public class SearchService {
     public List<SearchResult> searchTerm(String term) {
         return this.storageService.getAllSearchable().stream()
                 .filter(Objects::nonNull)
-                .filter(e -> e.getSearchTerm().contains(term))
+                .filter(e -> e.getSearchTerm()
+                        .toLowerCase()
+                        .contains(term.toLowerCase()))
                 .map(SearchResult::fromSearchable)
                 .collect(Collectors.toList());
     }
