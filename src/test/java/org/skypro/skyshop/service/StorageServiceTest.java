@@ -33,6 +33,15 @@ class StorageServiceTest {
         Product result = products.put(milk.getId(), milk);
 
         Assertions.assertEquals(result, milk);
+    }
 
+    @Test
+    void givenNoProduct_whenAddToShop_thenProductNotAdd() {
+        Product milk = new SimpleProduct("молоко", 100, UUID.randomUUID());
+        when(products.put(milk.getId(), milk)).thenReturn(milk);
+
+        Product result = products.put(milk.getId(), milk);
+
+        Assertions.assertEquals(result, milk);
     }
 }
