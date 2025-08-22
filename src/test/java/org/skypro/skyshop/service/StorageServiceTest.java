@@ -33,7 +33,6 @@ class StorageServiceTest {
         Product result = products.put(milk.getId(), milk);
 
         Assertions.assertEquals(result, milk);
-
     }
 
     @Test
@@ -44,6 +43,5 @@ class StorageServiceTest {
         Product result = products.put(milk.getId(), milk);
 
         Assertions.assertEquals(result, milk);
-
     }
 }
